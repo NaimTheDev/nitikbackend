@@ -15,15 +15,10 @@ public class NitikBackendServiceApplication implements CommandLineRunner {
 	PoemRepository repository;
 
 	public static void main(String[] args) {
-		System.setProperty("server.servlet.context-path", "/poems");
 
 		SpringApplication.run(NitikBackendServiceApplication.class, args);
 	}
-	@Bean
-	public WebServerFactoryCustomizer<ConfigurableServletWebServerFactory>
-	webServerFactoryCustomizer() {
-		return factory -> factory.setContextPath("/poems");
-	}
+
 	@Override
 	public void run(String... args) throws Exception {
 		deleteAll();
