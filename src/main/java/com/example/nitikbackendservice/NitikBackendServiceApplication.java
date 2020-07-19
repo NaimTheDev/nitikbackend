@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.server.WebServerFactoryCustomizer;
+import org.springframework.boot.web.servlet.server.ConfigurableServletWebServerFactory;
+import org.springframework.context.annotation.Bean;
 
 
 @SpringBootApplication
@@ -16,7 +19,11 @@ public class NitikBackendServiceApplication implements CommandLineRunner {
 
 		SpringApplication.run(NitikBackendServiceApplication.class, args);
 	}
-
+	@Bean
+	public WebServerFactoryCustomizer<ConfigurableServletWebServerFactory>
+	webServerFactoryCustomizer() {
+		return factory -> factory.setContextPath("/poems");
+	}
 	@Override
 	public void run(String... args) throws Exception {
 		deleteAll();
